@@ -1,0 +1,33 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="PetStoreAPI" context="/petstore">
+    <resource methods="GET" uri-template="/query?param={param}">
+        <inSequence>
+            <property name="uri.var.param" expression="$url:param"/>
+            <switch source="$ctx:uri.var.param">
+                <case regex="inventory">
+                    <call>
+                        <endpoint key="InventoryEndpoint"/>
+                    </call>
+                </case>
+                <case regex="pet">
+                    <call>
+                        <endpoint key="PetEndpoint"/>
+                    </call>
+                </case>
+                <default>
+                    <payloadFactory media-type="json">
+                        <format>{"error": "opcao errada"}</format>
+                        <args/>
+                    </payloadFactory>
+                    <respond/>
+                </default>
+            </switch>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="custom">
+                <property name="ERROR" value="An error occurred"/>
+            </log>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>

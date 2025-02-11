@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  title: HealthcareCategoryAPI
+  description: API Definition of HealthcareCategoryAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/healthcare
+paths:
+  /category/{category}:
+    get:
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response

@@ -1,0 +1,30 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="CDYNEPhoneVerificationAPI" context="/phoneVerification">
+    <resource methods="GET" uri-template="/checkPhoneNumber?phoneNumber={phoneNumber}&licenseKey={licenseKey}">
+        <inSequence>
+            <property name="uri.var.phoneNumber" expression="$url:phoneNumber"/>
+            <property name="uri.var.licenseKey" expression="$url:licenseKey"/>
+            <call>
+                <endpoint>
+                    <address uri="http://ws.cdyne.com/phoneverify/phoneverify.asmx/CheckPhoneNumber?PhoneNumber={uri.var.phoneNumber}&amp;LicenseKey={uri.var.licenseKey}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>-1</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                            <retryDelay>0</retryDelay>
+                        </markForSuspension>
+                    </address>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="custom">
+                <property name="ERROR" value="An error occurred"/>
+            </log>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>

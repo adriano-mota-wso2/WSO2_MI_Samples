@@ -1,0 +1,31 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="UserLoginAPI" context="/userLogin">
+    <resource methods="POST" uri-template="/login">
+        <inSequence>
+            <property name="uri.var.username" expression="json-eval($.name)" scope="default" type="STRING"/>
+            <property name="uri.var.password" expression="json-eval($.password)" scope="default" type="STRING"/>
+            
+            <!-- Transforming JSON to SOAP Request -->
+            <payloadFactory media-type="xml">
+                <format>
+                    <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:urn="urn:enterprise.soap.sforce.com">
+                        <soapenv:Body>
+                            <urn:login>
+                                <urn:username>$1</urn:username>
+                                <urn:password>$2</urn:password>
+                            </urn:login>
+                        </soapenv:Body>
+                    </soapenv:Envelope>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('uri.var.username')"/>
+                    <arg evaluator="xml" expression="get-property('uri.var.password')"/>
+                </args>
+            </payloadFactory>
+            
+            <!-- Optional: Call Salesforce Connector if needed -->
+            <!-- <salesforce.login configKey="SALESFORCE_CONNECTION"/> -->
+            
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
+  <artifact name="JSONMapper" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper.dmc</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties></properties>
+    </item>
+  </artifact>
+  <artifact name="JSONMapper_inputSchema" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper_inputSchema.json</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties></properties>
+    </item>
+  </artifact>
+  <artifact name="JSONMapper_outputSchema" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper_outputSchema.json</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties></properties>
+    </item>
+  </artifact>
+  <artifact name="JSONMapper" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper.dmc</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties></properties>
+    </item>
+  </artifact>
+  <artifact name="JSONMapper_inputSchema" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper_inputSchema.json</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties></properties>
+    </item>
+  </artifact>
+  <artifact name="JSONMapper_outputSchema" groupId="com.microintegrator.projects" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+    <item>
+      <file>JSONMapper_outputSchema.json</file>
+      <path>/_system/governance/datamapper/JSONMapper</path>
+      <mediaType>text/plain</mediaType>
+      <properties/>
+    </item>
+  </artifact>
+</artifacts>

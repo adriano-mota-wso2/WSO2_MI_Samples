@@ -1,0 +1,31 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="SwitchBackendAPI" context="/switchBackend">
+    <resource methods="GET" uri-template="/service?type={type}">
+        <inSequence>
+            <property name="uri.var.type" expression="get-property('uri.var.type')" scope="default" type="STRING"/>
+            <switch source="get-property('uri.var.type')">
+                <case regex="pet">
+                    <call>
+                        <endpoint>
+                            <http method="get" uri-template="https://petstore.swagger.io/v2/pet/findByStatus?status=available"/>
+                        </endpoint>
+                    </call>
+                </case>
+                <case regex="inventory">
+                    <call>
+                        <endpoint>
+                            <http method="get" uri-template="https://petstore.swagger.io/v2/store/inventory"/>
+                        </endpoint>
+                    </call>
+                </case>
+                <default>
+                    <payloadFactory media-type="json">
+                        <format>{"error": "Invalid type parameter. Please use 'pet' or 'inventory'."}</format>
+                        <args/>
+                    </payloadFactory>
+                    <respond/>
+                </default>
+            </switch>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

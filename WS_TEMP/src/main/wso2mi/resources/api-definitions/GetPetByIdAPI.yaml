@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  title: GetPetByIdAPI
+  description: API Definition of GetPetByIdAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/pet
+paths:
+  /{petId}:
+    get:
+      parameters:
+      - name: petId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response

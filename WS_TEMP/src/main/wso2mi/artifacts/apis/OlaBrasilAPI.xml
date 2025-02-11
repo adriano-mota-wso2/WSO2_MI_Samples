@@ -1,0 +1,11 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="OlaBrasilAPI" context="/olaBrasil">
+    <resource methods="GET" uri-template="/sayHello">
+        <inSequence>
+            <payloadFactory media-type="json">
+                <format>{"message": "Ola Brasil!"}</format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

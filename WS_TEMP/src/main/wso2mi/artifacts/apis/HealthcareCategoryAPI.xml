@@ -1,0 +1,13 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="HealthcareCategoryAPI" context="/healthcare">
+    <resource methods="GET" uri-template="/category/{category}">
+        <inSequence>
+            <property name="uri.var.category" expression="get-property('uri.var.category')" scope="default" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="http://localhost:9090/healthcare/{uri.var.category}"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

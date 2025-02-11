@@ -1,0 +1,13 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="PostMessageToQueue">
+    <property name="OUT_ONLY" value="true"/>
+    <property name="FORCE_SC_ACCEPTED" value="true" scope="axis2"/>
+    <payloadFactory media-type="json">
+        <format>{"message": "$1"}</format>
+        <args>
+            <arg evaluator="xml" expression="get-property('message')"/>
+        </args>
+    </payloadFactory>
+    <call>
+        <endpoint key="RabbitMQEndpoint"/>
+    </call>
+</sequence>

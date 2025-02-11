@@ -1,0 +1,9 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="TransformAPI" context="/transform">
+    <resource methods="POST" uri-template="/data">
+        <inSequence>
+            <datamapper config="gov:/datamapper/JSONMapper/JSONMapper.dmc" inputSchema="gov:/datamapper/JSONMapper/JSONMapper_inputSchema.json" inputType="JSON" outputSchema="gov:/datamapper/JSONMapper/JSONMapper_outputSchema.json" outputType="JSON"/><!-- Assuming the input JSON looks like {"inputField1": "value1", "inputField2": "value2"} -->
+            <!-- Transforming it to {"outputField1": "value1", "outputField2": "value2"} -->
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

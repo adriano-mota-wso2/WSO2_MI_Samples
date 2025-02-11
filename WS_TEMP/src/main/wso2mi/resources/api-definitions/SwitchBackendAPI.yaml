@@ -1,0 +1,18 @@
+openapi: 3.0.1
+info:
+  title: SwitchBackendAPI
+  description: API Definition of SwitchBackendAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/switchBackend
+paths:
+  /service:
+    get:
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response

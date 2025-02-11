@@ -1,0 +1,54 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="SwaggerPetstore" context="/petstore">
+    <resource methods="POST" uri-template="/pet">
+        <inSequence>
+            <property name="uri.var.api_key" value="special-key"/>
+            <payloadFactory media-type="json">
+                <format>{"name": "$1", "photoUrls": $2}</format>
+                <args>
+                    <arg evaluator="json" expression="$.body.name"/>
+                    <arg evaluator="json" expression="$.body.photoUrls"/>
+                </args>
+            </payloadFactory>
+            <call>
+                <endpoint>
+                    <http method="post" uri-template="https://petstore.swagger.io/v2/pet?api_key={uri.var.api_key}"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+    <resource methods="GET" uri-template="/pet/findByStatus">
+        <inSequence>
+            <property name="uri.var.status" expression="get-property('query.param.status')"/>
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="https://petstore.swagger.io/v2/pet/findByStatus?status={uri.var.status}"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+    <resource methods="GET" uri-template="/pet/{petId}">
+        <inSequence>
+            <property name="uri.var.petId" expression="get-property('uri.var.petId')"/>
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="https://petstore.swagger.io/v2/pet/{uri.var.petId}"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+    <resource methods="DELETE" uri-template="/pet/{petId}">
+        <inSequence>
+            <property name="uri.var.petId" expression="get-property('uri.var.petId')"/>
+            <property name="uri.var.api_key" expression="get-property('transport', 'api_key')"/>
+            <call>
+                <endpoint>
+                    <http method="delete" uri-template="https://petstore.swagger.io/v2/pet/{uri.var.petId}?api_key={uri.var.api_key}"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

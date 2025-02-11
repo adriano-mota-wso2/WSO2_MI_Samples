@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: BackendCallerAPI
+  description: API Definition of BackendCallerAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/backendService
+paths:
+  /callBackend:
+    get:
+      responses:
+        default:
+          description: Default response

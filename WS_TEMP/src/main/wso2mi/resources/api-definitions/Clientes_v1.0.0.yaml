@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: Clientes
+  description: API Definition of Clientes
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/clientes/1.0.0
+paths:
+  /readFile:
+    get:
+      responses:
+        default:
+          description: Default response

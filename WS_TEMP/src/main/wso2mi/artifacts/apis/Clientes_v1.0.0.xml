@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/clientes" name="Clientes" version="1.0.0" version-type="url" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" protocol="http" uri-template="/readFile">
+        <inSequence>
+            <dataServiceCall serviceName="ClientesDataService">
+                <operations type="single">
+                    <operation name="readFileOp">
+                    </operation>
+                </operations>
+                <source type="inline"/>
+                <target type="body"/>
+            </dataServiceCall>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <property name="ContentType" scope="axis2" type="STRING" value="application/json-patch+json"/>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>

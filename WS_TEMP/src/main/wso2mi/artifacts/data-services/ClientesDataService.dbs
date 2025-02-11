@@ -1,0 +1,53 @@
+<data name="ClientesDataService" serviceNamespace="" serviceGroup="" transports="http https" disableStreaming="true">
+    <description/>
+    <config id="ClientesDataSource">
+        <property name="csv_hasheader">true</property>
+        <property name="csv_datasource">/Users/adrianomota/workspace/workshops/mi_vscode/middleware_clientes_1.csv</property>
+        <property name="csv_columnseperator">,</property>
+        <property name="csv_startingrow">2</property>
+        <property name="csv_headerrow">1</property>
+    </config>
+    <query id="get_readfile_query" useConfig="ClientesDataSource">
+        <result element="Clientes" rowName="Cliete">
+            <element name="_id" column="_id" xsdType="string" export="_id" exportType="Scalar" requiredRoles=""/>
+            <element name="matricula" column="matricula" xsdType="string" export="matricula" exportType="Scalar" requiredRoles=""/>
+            <element name="tipoDocumento" column="tipoDocumento" xsdType="string" export="tipoDocumento" exportType="Scalar" requiredRoles=""/>
+            <element name="nome" column="nome" xsdType="string" export="nome" exportType="Scalar" requiredRoles=""/>
+            <element name="numeroDocumento" column="numeroDocumento" xsdType="string" export="numeroDocumento" exportType="Scalar" requiredRoles=""/>
+            <element name="email" column="email" xsdType="string" export="email" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.cep" column="endereco.cep" xsdType="string" export="endereco.cep" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.logradouro" column="endereco.logradouro" xsdType="string" export="endereco.logradouro" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.complemento" column="endereco.complemento" xsdType="string" export="endereco.complemento" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.bairro" column="endereco.bairro" xsdType="string" export="endereco.bairro" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.numero" column="endereco.numero" xsdType="string" export="endereco.numero" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.municipio" column="endereco.municipio" xsdType="string" export="endereco.municipio" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.uf" column="endereco.uf" xsdType="string" export="endereco.uf" exportType="Scalar" requiredRoles=""/>
+        </result>
+    </query>
+    <query id="wsdl_readfile_query" useConfig="ClientesDataSource">
+        <result element="Clientes" rowName="Cliete">
+            <element name="_id" column="_id" xsdType="string" export="_id" exportType="Scalar" requiredRoles=""/>
+            <element name="matricula" column="matricula" xsdType="string" export="matricula" exportType="Scalar" requiredRoles=""/>
+            <element name="tipoDocumento" column="tipoDocumento" xsdType="string" export="tipoDocumento" exportType="Scalar" requiredRoles=""/>
+            <element name="nome" column="nome" xsdType="string" export="nome" exportType="Scalar" requiredRoles=""/>
+            <element name="numeroDocumento" column="numeroDocumento" xsdType="string" export="numeroDocumento" exportType="Scalar" requiredRoles=""/>
+            <element name="email" column="email" xsdType="string" export="email" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.cep" column="endereco.cep" xsdType="string" export="endereco.cep" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.logradouro" column="endereco.logradouro" xsdType="string" export="endereco.logradouro" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.complemento" column="endereco.complemento" xsdType="string" export="endereco.complemento" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.bairro" column="endereco.bairro" xsdType="string" export="endereco.bairro" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.numero" column="endereco.numero" xsdType="string" export="endereco.numero" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.municipio" column="endereco.municipio" xsdType="string" export="endereco.municipio" exportType="Scalar" requiredRoles=""/>
+            <element name="endereco.uf" column="endereco.uf" xsdType="string" export="endereco.uf" exportType="Scalar" requiredRoles=""/>
+        </result>
+    </query>
+    <resource method="GET" path="readFile">
+        <call-query href="get_readfile_query"/>
+    </resource>
+    <query id="readfile_query" useConfig="ClientesDataSource">
+        <sql></sql>
+    </query>
+    <operation name="readFileOp" disableStreaming="true">
+        <call-query href="wsdl_readfile_query"/>
+    </operation>
+</data>

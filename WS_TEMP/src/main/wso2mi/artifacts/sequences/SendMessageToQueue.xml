@@ -1,0 +1,24 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="SendMessageToQueue">
+    <property name="OUT_ONLY" value="true"/>
+    <property name="FORCE_SC_ACCEPTED" value="true" scope="axis2"/>
+    <log category="INFO" level="full">
+        <property name="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" value="get-property('message')"/>
+    </log>
+    <property name="queuePayload" scope="axis2" type="JSON" expression="get-property('message')"/>
+    <!-- 
+    <payloadFactory media-type="json">
+        <format>{"message": "$1"}</format>
+        <args>
+            <arg evaluator="xml" literal="true" expression="get-property('message')"/>
+        </args>
+    </payloadFactory>
+    -->
+    <log category="INFO" level="full">
+        <property name="XXXXXXX" value="get-property('queuePayload')"/>
+    </log>
+    <call>
+        <endpoint key="RabbitMQEndpoint"/>
+        <source contentType="json" type="property">queuePayload</source>
+        <target type="body"/>
+    </call>
+</sequence>

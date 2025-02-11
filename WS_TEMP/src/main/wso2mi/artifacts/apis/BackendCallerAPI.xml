@@ -1,0 +1,12 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="BackendCallerAPI" context="/backendService">
+    <resource methods="GET" uri-template="/callBackend">
+        <inSequence>
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="https://apis.wso2.com/zvdz/mi-qsg/v1.0"/>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

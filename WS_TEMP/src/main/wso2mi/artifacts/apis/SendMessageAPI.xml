@@ -1,0 +1,9 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="SendMessageAPI" context="/messageSender">
+    <resource methods="POST" uri-template="/send">
+        <inSequence>
+            <property name="message" expression="json-eval($.message)" scope="default" type="STRING"/>
+            <sequence key="PostMessageToQueue"/>
+            <respond/>
+        </inSequence>
+    </resource>
+</api>

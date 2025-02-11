@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  title: GetUserByUsernameAPI
+  description: API Definition of GetUserByUsernameAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/user
+paths:
+  /{username}:
+    get:
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
