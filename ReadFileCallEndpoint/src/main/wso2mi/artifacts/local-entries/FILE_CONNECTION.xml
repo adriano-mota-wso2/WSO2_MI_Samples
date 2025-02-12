@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <localEntry key="FILE_CONNECTION" xmlns="http://ws.apache.org/ns/synapse">
+        <file.init>
+  <connectionType>LOCAL</connectionType>
+  <name>FILE_CONNECTION</name>
+  <workingDir>/Users/adrianomota/workspace/vscode/ReadFileCallEndpoint/files</workingDir>
+  <fileLockScheme>Local</fileLockScheme>
+</file.init>
+    </localEntry>
